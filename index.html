@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="梅赛德斯-奔驰">
+  <link rel="apple-touch-icon" href="logo.png">
+  <title>梅赛德斯-奔驰</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="loading-modal" id="loading-modal" style="display: none;">
+      <div class="loading-content">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">软件正在初始化中...</div>
+      </div>
+  </div>
+
+  <div id="main-page">
+      <div class="header-icons">
+          <img src="img/1.png" class="header-icon" alt="编辑车辆" id="edit-icon">
+          <img src="img/2.png" class="header-icon" alt="编辑资料" id="user-edit-icon">
+      </div>
+
+      <div class="user-card">
+          <div class="avatar-wrapper">
+              <div class="avatar-badge">
+                  <img src="img/qb.png" alt="徽标">
+              </div>
+              <img src="img/6.png" alt="用户头像" class="avatar" id="user-avatar">
+          </div>
+
+          <div class="user-info">
+              <div class="username">
+                  <span id="username-text">阿森@Asen26</span>
+                  <img src="img/v.png" class="username-arrow" alt="箭头">
+              </div>
+              <div class="username-small" id="user-signature">你的个性签名</div>
+
+              <div class="stats-container">
+                  <div class="stat-item">
+                      <div class="stat-number" id="moment-count">0</div>
+                      <div class="stat-label">此刻</div>
+                  </div>
+                  <div class="stat-item">
+                      <div class="stat-number" id="follow-count">0</div>
+                      <div class="stat-label">关注</div>
+                  </div>
+                  <div class="stat-item">
+                      <div class="stat-number" id="fans-count">0</div>
+                      <div class="stat-label">粉丝</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <img src="img/qice.png" class="vehicle-image" alt="未创建车辆">
+
+      <div class="function-list">
+          <div class="function-item">
+              <img src="gn/1.jpg" class="function-icon" alt="订单中心">
+              <span class="function-name">订单中心</span>
+              <img src="img/3.png" class="arrow-icon" alt="箭头">
+          </div>
+          <div class="function-item">
+              <img src="gn/2.jpg" class="function-icon" alt="权益中心">
+              <span class="function-name">权益中心</span>
+              <img src="img/3.png" class="arrow-icon" alt="箭头">
+          </div>
+          <div class="function-item">
+              <img src="gn/3.jpg" class="function-icon" alt="我的保修手册">
+              <span class="function-name">我的保修手册</span>
+              <img src="img/3.png" class="arrow-icon" alt="箭头">
+          </div>
+          <div class="function-item">
+              <img src="gn/4.jpg" class="function-icon" alt="地址管理">
+              <span class="function-name">地址管理</span>
+              <img src="img/3.png" class="arrow-icon" alt="箭头">
+          </div>
+      </div>
+
+      <div class="function-list">
+          <div class="function-item">
+              <img src="gn/5.jpg" class="function-icon" alt="用车指南">
+              <span class="function-name">用车指南</span>
+              <img src="img/3.png" class="arrow-icon" alt="箭头">
+          </div>
+      </div>
+
+      <div class="function-list">
+          <div class="function-item">
+              <img src="gn/6.jpg" class="function-icon" alt="授权管理">
+              <span class="function-name">授权管理</span>
+              <img src="img/3.png" class="arrow-icon" alt="箭头">
+          </div>
+          <div class="function-item">
+              <img src="gn/7.jpg" class="function-icon" alt="法律信息">
+              <span class="function-name">法律信息</span>
+              <img src="img/3.png" class="arrow-icon" alt="箭头">
+          </div>
+          <div class="function-item">
+              <img src="gn/8.jpg" class="function-icon" alt="产品优化建议">
+              <span class="function-name">产品优化建议</span>
+              <img src="img/3.png" class="arrow-icon" alt="箭头">
+          </div>
+      </div>
+  </div>
+
+  <div class="vehicle-page" id="vehicle-page">
+      <div class="background"></div>
+
+      <div class="info-container">
+          <div class="info-row">
+              <div class="info-item" id="fuel-item">
+                  <img src="ing/1.png" class="fuel-icon" alt="油量">
+                  <span class="info-value" id="fuel-value">30%</span>
+              </div>
+              <div class="progress-bar-container">
+                  <div class="progress-bar">
+                      <div class="progress-fill" id="progress-fill"></div>
+                  </div>
+              </div>
+              <div class="info-item" id="mileage-item">
+                  <span class="info-value" id="mileage-value">98公里</span>
+              </div>
+          </div>
+          <div class="time-info">
+              <div class="time-icon"></div>
+              <span id="current-time">同步于: 2025/08/24 19:12</span>
+          </div>
+      </div>
+
+      <div class="carousel-container">
+          <div class="carousel">
+              <div class="carousel-item">
+                  <img src="img/car.png" class="carousel-img" alt="车辆图片1">
+              </div>
+              <div class="carousel-item">
+                  <img src="img/car2.png" class="carousel-img" alt="车辆图片2">
+              </div>
+              <div class="carousel-item">
+                  <img src="img/car3.png" class="carousel-img" alt="车辆图片3">
+              </div>
+          </div>
+      </div>
+
+      <div class="carousel-dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+      </div>
+  </div>
+
+  <div class="edit-modal" id="edit-modal">
+      <div class="edit-content">
+          <div class="edit-title">编辑车辆信息</div>
+          <div class="edit-field">
+              <label for="battery-input">油量:</label>
+              <input type="text" id="battery-input" placeholder="输入油量百分比">
+          </div>
+          <div class="edit-field">
+              <label for="mileage-input">公里:</label>
+              <input type="text" id="mileage-input" placeholder="输入公里数">
+          </div>
+          <div class="edit-buttons">
+              <button class="cancel-btn" id="cancel-edit">取消</button>
+              <button class="save-btn" id="save-edit">保存</button>
+          </div>
+      </div>
+  </div>
+
+  <div class="user-edit-modal" id="user-edit-modal">
+      <div class="user-edit-content">
+          <div class="edit-title">编辑个人信息</div>
+          <div class="avatar-upload">
+              <img src="img/6.png" alt="头像预览" class="avatar-preview" id="avatar-preview">
+              <div class="avatar-upload-text">点击更换头像</div>
+              <input type="file" id="avatar-upload-input" accept="image/*" style="display: none;">
+          </div>
+          <div class="edit-field">
+              <label for="username-input">名称:</label>
+              <input type="text" id="username-input" placeholder="输入用户名">
+          </div>
+          <div class="edit-field">
+              <label for="signature-input">个性签名:</label>
+              <input type="text" id="signature-input" placeholder="输入个性签名">
+          </div>
+          <div class="edit-field">
+              <label for="moment-input">此刻:</label>
+              <input type="text" id="moment-input" placeholder="输入此刻数量">
+          </div>
+          <div class="edit-field">
+              <label for="follow-input">关注:</label>
+              <input type="text" id="follow-input" placeholder="输入关注数量">
+          </div>
+          <div class="edit-field">
+              <label for="fans-input">粉丝:</label>
+              <input type="text" id="fans-input" placeholder="输入粉丝数量">
+          </div>
+          <div class="edit-buttons">
+              <button class="cancel-btn" id="cancel-user-edit">取消</button>
+              <button class="save-btn" id="save-user-edit">保存</button>
+          </div>
+      </div>
+  </div>
+
+  <div class="bottom-navigation" id="bottom-nav">
+      <a href="javascript:void(0)" class="nav-link" onclick="handleNavClick('discover')">
+          <img src="di/1.png" alt="发现" class="nav-icon">
+          <span class="nav-label">发现</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-link" onclick="handleNavClick('service')">
+          <img src="di/2.png" alt="地图" class="nav-icon">
+          <span class="nav-label">地图</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-link" id="vehicle-link" onclick="toggleVehiclePage()">
+          <img src="di/3.png" alt="车辆" class="nav-icon" id="vehicle-icon">
+          <span class="nav-label">车辆</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-link" onclick="handleNavClick('shop')">
+          <img src="di/4.png" alt="商店" class="nav-icon">
+          <span class="nav-label">商店</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-link" id="mine-link" onclick="showMainPage()">
+          <img src="di/5.png" alt="我的" class="nav-icon" id="mine-icon">
+          <span class="nav-label">我的</span>
+      </a>
+  </div>
+
+  <script>
+      var isVehicleActive = false;
+      var batteryLevel = localStorage.getItem('batteryLevel') || '30';
+      var mileage = localStorage.getItem('mileage') || '98';
+      var username = localStorage.getItem('username') || '阿森@Asen26';
+      var signature = localStorage.getItem('signature') || '你的个性签名';
+      var momentCount = localStorage.getItem('momentCount') || '0';
+      var followCount = localStorage.getItem('followCount') || '0';
+      var fansCount = localStorage.getItem('fansCount') || '0';
+      var avatarUrl = localStorage.getItem('avatarUrl') || 'img/6.png';
+
+      function updateProgressBar() {
+          var bar = document.getElementById('progress-fill');
+          if (bar) bar.style.width = batteryLevel + '%';
+      }
+
+      function initDisplay() {
+          document.getElementById('username-text').textContent = username;
+          document.getElementById('user-signature').textContent = signature;
+          document.getElementById('moment-count').textContent = momentCount;
+          document.getElementById('follow-count').textContent = followCount;
+          document.getElementById('fans-count').textContent = fansCount;
+          document.getElementById('user-avatar').src = avatarUrl;
+          document.getElementById('avatar-preview').src = avatarUrl;
+          document.getElementById('fuel-value').textContent = batteryLevel + '%';
+          document.getElementById('mileage-value').textContent = mileage + '公里';
+          updateProgressBar();
+      }
+
+      function toggleVehiclePage() {
+          var vp = document.getElementById('vehicle-page');
+          var vi = document.getElementById('vehicle-icon');
+          var mi = document.getElementById('mine-icon');
+          var bn = document.getElementById('bottom-nav');
+          if (!isVehicleActive) {
+              vi.src = 'di/3.1.png'; mi.src = 'di/5.1.png';
+              bn.classList.add('vehicle-active'); vp.style.display = 'block';
+              isVehicleActive = true; initCarousel();
+          } else {
+              vi.src = 'di/3.png'; mi.src = 'di/5.png';
+              bn.classList.remove('vehicle-active'); vp.style.display = 'none';
+              isVehicleActive = false;
+          }
+      }
+
+      function showMainPage() {
+          var vi = document.getElementById('vehicle-icon');
+          var mi = document.getElementById('mine-icon');
+          var bn = document.getElementById('bottom-nav');
+          var vp = document.getElementById('vehicle-page');
+          vi.src = 'di/3.png'; mi.src = 'di/5.png';
+          bn.classList.remove('vehicle-active'); vp.style.display = 'none';
+          isVehicleActive = false;
+      }
+
+      function handleNavClick(t) { if (t === 'mine') showMainPage(); }
+
+      function showModal(id) {
+          var m = document.getElementById(id); m.style.display = 'flex';
+          setTimeout(function() { m.classList.add('show'); }, 10);
+      }
+      function hideModal(id) {
+          var m = document.getElementById(id); m.classList.remove('show');
+          setTimeout(function() { m.style.display = 'none'; }, 300);
+      }
+
+      document.getElementById('edit-icon').addEventListener('click', function() {
+          document.getElementById('battery-input').value = batteryLevel;
+          document.getElementById('mileage-input').value = mileage;
+          showModal('edit-modal');
+      });
+      document.getElementById('cancel-edit').addEventListener('click', function() { hideModal('edit-modal'); });
+      document.getElementById('save-edit').addEventListener('click', function() {
+          var b = document.getElementById('battery-input').value;
+          var m = document.getElementById('mileage-input').value;
+          if (b && m) {
+              batteryLevel = b; mileage = m;
+              localStorage.setItem('batteryLevel', b); localStorage.setItem('mileage', m);
+              document.getElementById('fuel-value').textContent = b + '%';
+              document.getElementById('mileage-value').textContent = m + '公里';
+              updateProgressBar(); hideModal('edit-modal');
+          }
+      });
+
+      document.getElementById('user-edit-icon').addEventListener('click', function() {
+          document.getElementById('username-input').value = username;
+          document.getElementById('signature-input').value = signature;
+          document.getElementById('moment-input').value = momentCount;
+          document.getElementById('follow-input').value = followCount;
+          document.getElementById('fans-input').value = fansCount;
+          showModal('user-edit-modal');
+      });
+      document.getElementById('cancel-user-edit').addEventListener('click', function() { hideModal('user-edit-modal'); });
+      document.getElementById('save-user-edit').addEventListener('click', function() {
+          var un = document.getElementById('username-input').value;
+          var sig = document.getElementById('signature-input').value;
+          var mm = document.getElementById('moment-input').value;
+          var fw = document.getElementById('follow-input').value;
+          var fs = document.getElementById('fans-input').value;
+          if (un && sig && mm && fw && fs) {
+              username = un; signature = sig; momentCount = mm; followCount = fw; fansCount = fs;
+              localStorage.setItem('username', un);
+              localStorage.setItem('signature', sig);
+              localStorage.setItem('momentCount', mm);
+              localStorage.setItem('followCount', fw);
+              localStorage.setItem('fansCount', fs);
+              document.getElementById('username-text').textContent = un;
+              document.getElementById('user-signature').textContent = sig;
+              document.getElementById('moment-count').textContent = mm;
+              document.getElementById('follow-count').textContent = fw;
+              document.getElementById('fans-count').textContent = fs;
+              hideModal('user-edit-modal');
+          }
+      });
+
+      document.getElementById('avatar-preview').addEventListener('click', function() {
+          document.getElementById('avatar-upload-input').click();
+      });
+      document.getElementById('avatar-upload-input').addEventListener('change', function(e) {
+          var f = e.target.files[0];
+          if (f) { var r = new FileReader(); r.onload = function(ev) { var u = ev.target.result; document.getElementById('avatar-preview').src = u; document.getElementById('user-avatar').src = u; localStorage.setItem('avatarUrl', u); }; r.readAsDataURL(f); }
+      });
+
+      function initCarousel() {
+          var carousel = document.querySelector('.carousel');
+          var dots = document.querySelectorAll('.dot');
+          var items = document.querySelectorAll('.carousel-item');
+          var container = document.querySelector('.carousel-container');
+          var ci = 0, sx = 0, dragging = false, dOff = 0, animating = false, aid = null;
+          function giw() { return items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginLeft) * 2; }
+          function uc(instant) {
+              if (aid) { cancelAnimationFrame(aid); aid = null; }
+              animating = true; var iw = giw(), co = (innerWidth - iw) / 2;
+              carousel.style.transition = instant ? 'none' : 'transform 0.3s cubic-bezier(0.22,0.61,0.36,1)';
+              carousel.style.transform = 'translateX(' + (co - ci * iw) + 'px)';
+              dots.forEach(function(d,i) { d.classList.toggle('active', i === ci); });
+              if (!instant) { aid = requestAnimationFrame(function() { animating = false; }); } else { animating = false; }
+          }
+          function hs() {
+              var iw = giw(), th = iw * 0.15;
+              if (Math.abs(dOff) > th) { if (dOff < 0 && ci < items.length-1) ci++; else if (dOff > 0 && ci > 0) ci--; }
+              uc(false); dOff = 0;
+          }
+          dots.forEach(function(d) { d.addEventListener('click', function() { if (animating) return; ci = parseInt(this.getAttribute('data-index')); uc(false); }); });
+          container.addEventListener('touchstart', function(e) { if (animating) return; sx = e.touches[0].clientX; dragging = true; carousel.style.transition = 'none'; e.preventDefault(); }, {passive:false});
+          container.addEventListener('touchmove', function(e) { if (!dragging || animating) return; var x = e.touches[0].clientX; dOff = x - sx; var iw = giw(), co = (innerWidth - iw) / 2, o = co - ci * iw + dOff; if (ci===0 && dOff>0) o = co + dOff*0.3; else if (ci===items.length-1 && dOff<0) o = co - ci*iw + dOff*0.3; carousel.style.transform = 'translateX('+o+'px)'; e.preventDefault(); }, {passive:false});
+          container.addEventListener('touchend', function(e) { if (!dragging || animating) return; dragging = false; hs(); e.preventDefault(); }, {passive:false});
+          container.addEventListener('mousedown', function(e) { if (animating) return; sx = e.clientX; dragging = true; carousel.style.transition = 'none'; e.preventDefault(); });
+          document.addEventListener('mousemove', function(e) { if (!dragging || animating) return; var x = e.clientX; dOff = x - sx; var iw = giw(), co = (innerWidth - iw) / 2, o = co - ci * iw + dOff; if (ci===0 && dOff>0) o = co + dOff*0.3; else if (ci===items.length-1 && dOff<0) o = co - ci*iw + dOff*0.3; carousel.style.transform = 'translateX('+o+'px)'; e.preventDefault(); });
+          document.addEventListener('mouseup', function(e) { if (!dragging || animating) return; dragging = false; hs(); e.preventDefault(); });
+          uc(true);
+          window.addEventListener('resize', function() { uc(true); });
+      }
+
+      function updateTime() {
+          var n = new Date();
+          document.getElementById('current-time').textContent = '同步于: ' + n.getFullYear() + '/' + String(n.getMonth()+1).padStart(2,'0') + '/' + String(n.getDate()).padStart(2,'0') + ' ' + String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0');
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+          initDisplay(); updateTime(); setInterval(updateTime, 60000);
+      });
+  </script>
+</body>
+</html>
