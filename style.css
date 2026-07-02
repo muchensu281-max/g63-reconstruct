@@ -28,6 +28,110 @@ body {
   min-height: -webkit-fill-available; /* iOS fallback */
 }
 
+body.auth-locked {
+  overflow: hidden;
+}
+
+body.auth-locked #main-page,
+body.auth-locked #vehicle-page,
+body.auth-locked #bottom-nav,
+body.auth-locked .modal,
+body.auth-locked .loading-modal {
+  display: none !important;
+}
+
+.auth-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: url('assets/bg.svg') center/cover no-repeat fixed, #000;
+}
+
+.auth-card {
+  width: min(100%, 420px);
+  padding: 44px 28px 32px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.auth-logo {
+  width: 92px;
+  height: 92px;
+  border-radius: 22px;
+  align-self: center;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.auth-card h1 {
+  margin: 8px 0 12px;
+  font-size: 34px;
+  line-height: 1.2;
+  text-align: center;
+  color: #222;
+  font-weight: 700;
+}
+
+.auth-card label {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+}
+
+.auth-card input {
+  width: 100%;
+  height: 58px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+  padding: 0 16px;
+  font-size: 18px;
+  color: #111;
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.auth-card input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.18);
+}
+
+.auth-card button {
+  width: 100%;
+  height: 58px;
+  border: 0;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background: #667eea;
+  cursor: pointer;
+}
+
+.auth-card button.auth-contact {
+  color: #fff;
+  background: #6c757d;
+}
+
+.auth-error {
+  min-height: 22px;
+  color: #f6465d;
+  font-size: 15px;
+  text-align: center;
+}
+
 /* iOS Safari: avoid background-attachment: fixed rendering gaps */
 @supports (-webkit-touch-callout: none) {
   body { background-attachment: scroll; }

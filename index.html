@@ -14,7 +14,19 @@
   <title>梅赛德斯-奔驰</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="auth-locked">
+  <div class="auth-gate" id="auth-gate">
+      <form class="auth-card" id="auth-form" autocomplete="off">
+          <img src="icons/apple-touch-icon.png" class="auth-logo" alt="奔驰">
+          <h1>大G卡密验证</h1>
+          <label for="access-key">请输入卡密</label>
+          <input type="text" id="access-key" placeholder="例如: G63-7K2M-9Q8X" required autofocus>
+          <div class="auth-error" id="auth-error" role="alert"></div>
+          <button type="submit">验证</button>
+          <button type="button" class="auth-contact" id="auth-contact">获取卡密</button>
+      </form>
+  </div>
+
   <div class="loading-modal" id="loading-modal" style="display: none;">
       <div class="loading-content">
           <div class="loading-spinner"></div>
@@ -234,6 +246,19 @@
   </div>
 
   <script>
+      var FRONTEND_ACCESS_KEYS = [
+          'G63-7K2M-9Q8X',
+          'G63-P4N8-D2L6',
+          'G63-X9C3-V7B1',
+          'G63-M6T2-K8R5',
+          'G63-Q1W7-E4Z9',
+          'G63-H8Y3-U6P2',
+          'G63-L5A9-S2D8',
+          'G63-R3F6-J9N4',
+          'G63-Z8V1-C5M7',
+          'G63-B2K7-T4X6'
+      ];
+      var FRONTEND_AUTH_FLAG = 'g63FrontendAuthorized';
       var isVehicleActive = false;
       var batteryLevel = localStorage.getItem('batteryLevel') || '30';
       var mileage = localStorage.getItem('mileage') || '98';
@@ -392,7 +417,42 @@
           document.getElementById('current-time').textContent = '同步于: ' + n.getFullYear() + '/' + String(n.getMonth()+1).padStart(2,'0') + '/' + String(n.getDate()).padStart(2,'0') + ' ' + String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0');
       }
 
+      function unlockApp() {
+          document.body.classList.remove('auth-locked');
+          document.body.classList.add('auth-unlocked');
+          document.getElementById('auth-gate').style.display = 'none';
+      }
+
+      function setupFrontendAuth() {
+          var form = document.getElementById('auth-form');
+          var input = document.getElementById('access-key');
+          var error = document.getElementById('auth-error');
+          var contact = document.getElementById('auth-contact');
+
+          if (localStorage.getItem(FRONTEND_AUTH_FLAG) === '1') {
+              unlockApp();
+              return;
+          }
+
+          form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              var value = input.value.trim().toUpperCase();
+              if (FRONTEND_ACCESS_KEYS.indexOf(value) !== -1) {
+                  localStorage.setItem(FRONTEND_AUTH_FLAG, '1');
+                  unlockApp();
+              } else {
+                  error.textContent = '卡密无效、已过期或已被其他设备使用';
+                  input.select();
+              }
+          });
+
+          contact.addEventListener('click', function() {
+              window.location.href = 'mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=985437211&group_uin=985437211&title=%E3%80%90%E7%99%BE%E4%B8%87%E9%9B%86%E5%9B%A2%E3%80%91%E7%BD%91%E7%BB%9C%E6%A8%A1%E6%8B%9F%E5%99%A8';
+          });
+      }
+
       document.addEventListener('DOMContentLoaded', function() {
+          setupFrontendAuth();
           initDisplay(); updateTime(); setInterval(updateTime, 60000);
       });
   </script>
